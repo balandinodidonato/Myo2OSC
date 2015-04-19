@@ -1,5 +1,7 @@
 # MyoMusic #
 
+[![Join the chat at https://gitter.im/balandinodidonato/MyoMusic](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/balandinodidonato/MyoMusic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 MyoMusic is a collection of Myo connectors which want allows Myo users to interact with their favourite music application.
  
 It has been developed by [Balandino Di Donato](http://balandinodidonato.com) as a part of his research work at the [Integra Lab](http://www.bcu.ac.uk/conservatoire/research/research-funded-projects/integra-lab).
