@@ -20,7 +20,7 @@ void labels(){
   text("STATE: "+connectionState+" - "+syncState, rEmgX,rEmgY+rEmgYsize*3);
   
   textSize(graphLabelsTextSize*0.6);
-  text("DATA MAPING", tglemgX-width*0.017, tglemgY-tglYsize*0.5);
+  text("DATA MAPPING", tglemgX-width*0.017, tglemgY-tglYsize*0.5);
   text("RESCALE", sYawX+(tglYawX*0.25), tglemgY-tglYsize*0.5);
   text("Balandino Di Donato - 2016", textXfooter1,height*0.97); 
   text("www.balandinodidonato.com",  textXfooter2, height*0.99);
