@@ -3,39 +3,45 @@
 
 Orientation::Orientation()
 {
-    addAndMakeVisible(rescaleYaw);
-    addAndMakeVisible(rescalePitch);
-    addAndMakeVisible(rescaleRoll);
-    rescaleYaw.setLabelWidget("Yaw");
-    rescalePitch.setLabelWidget("Pitch");
-    rescaleRoll.setLabelWidget("Roll");
-    rescaleYaw.setTargetValue(0.5),
-    rescalePitch.setTargetValue(0.5);
-    rescaleRoll.setTargetValue(0.5);
+    addAndMakeVisible (rescaleYaw);
+    addAndMakeVisible (rescalePitch);
+    addAndMakeVisible (rescaleRoll);
+    rescaleYaw.setLabelWidget ("Yaw");
+    rescalePitch.setLabelWidget ("Pitch");
+    rescaleRoll.setLabelWidget ("Roll");
+    rescaleYaw.setTargetValue (0.5),
+    rescalePitch.setTargetValue (0.5);
+    rescaleRoll.setTargetValue (0.5);
 }
 
-void Orientation::paint(juce::Graphics &g)
+void Orientation::paint (juce::Graphics &g)
 {
-    g.fillAll(Colours::lightgrey);
-    g.setColour(Colours::grey);
-    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 5, 5);
-    g.setColour(Colours::black);
-    g.setFont(getHeight()*0.06);
-    g.drawText("Orientation", getLocalBounds(), Justification::centredTop, true); 
+    g.fillAll (Colours::lightgrey);
+    g.setColour (Colours::grey);
+    g.drawRoundedRectangle (0, 0, getWidth(), getHeight(), 5, 5);
+    g.setColour (Colours::black);
+    g.setFont (getHeight() * 0.06);
+    g.drawText ("Orientation", getLocalBounds(), Justification::centredTop, true);
 }
 
 void Orientation::resized()
 {
-    rescaleYaw.setBounds(10, getHeight()*0.07, getRight()-30, getHeight()*0.29);
-    rescalePitch.setBounds(rescaleYaw.getX(), rescaleYaw.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
-    rescaleRoll.setBounds(rescaleYaw.getX(), rescalePitch.getBottom()+7, rescaleYaw.getWidth(), rescaleYaw.getHeight());
+    rescaleYaw.setBounds (10, getHeight() * 0.07, getRight() - 30, getHeight() * 0.29);
+    rescalePitch.setBounds (rescaleYaw.getX(),
+                            rescaleYaw.getBottom() + 7,
+                            rescaleYaw.getWidth(),
+                            rescaleYaw.getHeight());
+    rescaleRoll.setBounds (rescaleYaw.getX(),
+                           rescalePitch.getBottom() + 7,
+                           rescaleYaw.getWidth(),
+                           rescaleYaw.getHeight());
 }
 
-void Orientation::setValues(Vector3D< float > Orientation)
+void Orientation::setValues (Vector3D<float> Orientation)
 {
-    rescaleYaw.setValue(Orientation.x);
-    rescalePitch.setValue(Orientation.y);
-    rescaleRoll.setValue(Orientation.z);
+    rescaleYaw.setValue (Orientation.x);
+    rescalePitch.setValue (Orientation.y);
+    rescaleRoll.setValue (Orientation.z);
 }
 
 Vector3D<float> Orientation::getValue()
@@ -49,7 +55,7 @@ Vector3D<float> Orientation::getValue()
 
 Vector3D<float> Orientation::getWl(){
     
-    orientationWl.set3DValue(orientationScaled);
+    orientationWl.set3DValue (orientationScaled);
     return orientationWl.get3DValue();
 }
 
@@ -69,7 +75,7 @@ float Orientation::getRoll()
 }
 
 // Recal functions from OSC data in input
-void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
+void Orientation::map (int myoData, int Action, float Value, bool ReverseStatus)
 {
     switch (myoData) {
         case 0:
@@ -81,7 +87,7 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
                 default:
                     break;
             }
-            break;
+                break;
         case 1:
             switch (Action) {
                 case 1: rescalePitch.setCalibrate(); break;
@@ -91,7 +97,7 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
                 default:
                     break;
             }
-            break;
+                break;
         case 2:
             switch (Action) {
                 case 1: rescaleRoll.setCalibrate(); break;
@@ -102,7 +108,7 @@ void Orientation::map(int myoData, int Action, float Value, bool ReverseStatus)
                     break;
             }
         default:
-        break;
+            break;
     }
 }
 

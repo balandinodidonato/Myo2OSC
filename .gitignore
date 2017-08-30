@@ -71,3 +71,6 @@ xcuserdata/
 >>>>>>> develop
 Myo Mapper/Builds/MacOSX/Myo Mapper.xcodeproj/project.pbxproj
 >>>>>>> develop
+
+## Local projucer file
+.jucer

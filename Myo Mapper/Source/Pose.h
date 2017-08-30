@@ -3,7 +3,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class Pose    : public Component
+class Pose  :   public Component
 {
 public:
     Pose();
@@ -11,7 +11,7 @@ public:
 
     void paint (Graphics&);
     void resized();
-    void setPoseLabel(String LabelText);
+    void setPoseLabel (String LabelText);
         
 private:
     Label poseLabel;    

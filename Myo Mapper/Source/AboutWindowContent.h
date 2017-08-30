@@ -4,11 +4,11 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 
-class AboutWindowContent  : public Component
+class AboutWindowContent    :   public Component
 {
 public:
-    AboutWindowContent ();
-    ~AboutWindowContent ();
+    AboutWindowContent();
+    ~AboutWindowContent();
 
     void paint (Graphics& g) override;
     void resized() override;

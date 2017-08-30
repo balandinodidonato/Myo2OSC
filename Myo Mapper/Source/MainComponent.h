@@ -3,7 +3,7 @@
 
 #include "orientation.h"
 //#include "mav.h"
-#include "settings.h"
+#include "Settings.h"
 #include "MyoManager.h"
 #include "Pose.h"
 #include "OSC.h"
@@ -15,12 +15,11 @@
 //==============================================================================
 /*
 */
-class MainComponent    : public Component,
-                         private Timer,
-                         public MenuBarModel,
-                        private ComboBox::Listener
+class MainComponent :   public Component,
+                        public MenuBarModel,
+                        private ComboBox::Listener,
+                        private Timer
 {
-    
 public:
     MainComponent();
     ~MainComponent();
@@ -32,7 +31,7 @@ public:
     Orientation orientation;
     
     StringArray getMenuBarNames() override;
-    PopupMenu getMenuForIndex(int index, const String& name) override;
+    PopupMenu getMenuForIndex (int index, const String& name) override;
     void menuItemSelected (int menuID, int index) override;
     
     enum MenuIDs {
@@ -51,6 +50,7 @@ public:
     
     
 private:
+    LookAndFeel_V3 OldLookAndFeel;
 
     void timerCallback() override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;

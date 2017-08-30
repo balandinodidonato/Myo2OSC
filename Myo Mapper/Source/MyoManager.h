@@ -4,7 +4,8 @@
 #include "MyoListener.h"
 #include "MyoData.h"
 
-class MyoManager : private Thread, private ReadWriteLock
+class MyoManager    :   private Thread,
+                        private ReadWriteLock
 {
 public:
     MyoManager();
@@ -17,9 +18,9 @@ public:
     void startPoll();
     void stopPoll();
     
-    void vibrate(String VibrationType);
+    void vibrate (String VibrationType);
         
-    std::vector<MyoData> getMyoData(bool &success) const;
+    std::vector<MyoData> getMyoData (bool &success) const;
 
 private:
     
