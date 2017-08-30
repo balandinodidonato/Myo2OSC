@@ -1,7 +1,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
 
-class MyoMapperApplication  : public JUCEApplication
+class MyoMapperApplication  :   public JUCEApplication
 {
 public:
     MyoMapperApplication() {}
@@ -40,10 +40,13 @@ public:
         {
             setUsingNativeTitleBar (true);
             setContentOwned (new MainComponent(), true);
-            setCentrePosition(getWidth()*0.5, 0);
+            setCentrePosition (getWidth() * 0.5, 0);
             setVisible (true);
             setResizable(true, true);
-            setResizeLimits(getParentWidth()*0.4, getParentHeight()*0.8, getParentWidth(), getParentHeight()*0.8);
+            setResizeLimits (getParentWidth() * 0.4,
+                             getParentHeight() * 0.8,
+                             getParentWidth(),
+                             getParentHeight() * 0.8);
         }
 
         void closeButtonPressed() override

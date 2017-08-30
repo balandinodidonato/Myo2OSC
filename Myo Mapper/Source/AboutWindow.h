@@ -4,7 +4,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AboutWindowContent.h"
 
-class AboutWindow    : public DocumentWindow
+class AboutWindow   :   public DocumentWindow
 
 {
 public:

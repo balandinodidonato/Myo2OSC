@@ -3,9 +3,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class Rescale    : public Component,
-                   public Button::Listener,
-                   public Slider::Listener
+class Rescale   :   public Component,
+                    public Button::Listener,
+                    public Slider::Listener
 {
 public:
     
@@ -21,11 +21,11 @@ public:
     void setLabelWidget (String LabelWidget);
     void setValue (float Value);
     float getValue();
-    void setTargetValue(float TargetValue);
-    void setMin(float Value);
-    void setMax(float Value);
+    void setTargetValue (float TargetValue);
+    void setMin (float Value);
+    void setMax (float Value);
     void setCalibrate();
-    void setReverse(bool Status);
+    void setReverse (bool Status);
     
 private:
     

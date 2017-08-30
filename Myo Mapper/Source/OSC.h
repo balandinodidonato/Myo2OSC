@@ -3,35 +3,35 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class OSC    : public Component,
-               private OSCReceiver,
-               private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>
+class OSC   :   public Component,
+                private OSCReceiver,
+                private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>
 
 {
 public:
     OSC();
     ~OSC();
     
-    void setSender(String HostAddress, int Port);
-    void setReceiver(int Port);
-    void sendOSC(int id,
+    void setSender (String HostAddress, int Port);
+    void setReceiver (int Port);
+    void sendOSC (int id,
                  std::array<int8_t, 8> emgRaw,
                  std::array<float, 8> emgScaled,
                  std::array<float, 8> emgScaledAbs,
                  std::array<float, 4> quaternion,
                  float mav,
                  float mavWl,
-                 Vector3D< float > gyro,
-                 Vector3D< float > gyroWfL,
-                 Vector3D< float > gyroScaled,
-                 Vector3D< float > gyroScaledWfL,
-                 Vector3D< float > acceleration,
-                 Vector3D< float > accelerationWfL,
-                 Vector3D< float > accelerationScaled,
-                 Vector3D< float > accelerationScaledWfL,
-                 Vector3D< float > orientationRaw,
-                 Vector3D< float > orientationScaled,
-                 Vector3D< float > orientationWfL,
+                 Vector3D<float> gyro,
+                 Vector3D<float> gyroWfL,
+                 Vector3D<float> gyroScaled,
+                 Vector3D<float> gyroScaledWfL,
+                 Vector3D<float> acceleration,
+                 Vector3D<float> accelerationWfL,
+                 Vector3D<float> accelerationScaled,
+                 Vector3D<float> accelerationScaledWfL,
+                 Vector3D<float> orientationRaw,
+                 Vector3D<float> orientationScaled,
+                 Vector3D<float> orientationWfL,
                  
                  String pose,
                  int poseID);
@@ -42,9 +42,9 @@ public:
     void disconnectReceiver();
     
     void oscMessageReceived (const OSCMessage& message) override;
-    void getOSCMessage(const OSCMessage& message, String myoData);
+    void getOSCMessage (const OSCMessage& message, String myoData);
     
-    void setMyoIdReceiver(int ID);
+    void setMyoIdReceiver (int ID);
     
     bool vibrate;
     String vibrationType;

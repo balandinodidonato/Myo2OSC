@@ -115,7 +115,7 @@
 #X restore 9 400 pd YAW;
 #X text 7 378 MESSAGES TO MYO MAPPER;
 #X text 14 60 MESSAGES FROM MYO MAPPER;
-#N canvas 109 22 430 268 VIBRATE 0;
+#N canvas 109 23 430 268 VIBRATE 0;
 #X obj 37 222 s osc;
 #X obj 35 60 bng 15 250 50 0 empty empty Short 17 7 0 10 -262144 -1
 -1;
@@ -126,15 +126,15 @@
 #X obj 131 89 symbol short;
 #X obj 131 119 symbol medium;
 #X obj 131 159 symbol long;
-#X msg 232 191 send /myo/2/vibrate \$1;
 #X msg 37 193 send /myo1/vibrate \$1;
+#X msg 232 191 send /myo2/vibrate \$1;
 #X connect 1 0 4 0;
 #X connect 2 0 5 0;
 #X connect 3 0 6 0;
-#X connect 4 0 8 0;
 #X connect 4 0 7 0;
-#X connect 5 0 8 0;
-#X connect 6 0 8 0;
+#X connect 4 0 8 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 0;
 #X connect 7 0 0 0;
 #X connect 8 0 0 0;
 #X coords 0 -1 1 1 100 150 1 25 25;
@@ -261,7 +261,7 @@
 #X restore 489 400 pd MAV;
 #N canvas 859 112 450 300 oscSender 0;
 #X obj 106 163 tgl 15 0 empty empty Status_Connection 17 7 0 10 -262144
--1 -1 0 1;
+-1 -1 1 1;
 #X msg 166 247 disconnect;
 #X obj 105 30 r init;
 #X obj 9 86 r osc;
@@ -269,7 +269,7 @@
 #X msg 105 52 5431;
 #X floatatom 105 84 5 0 0 1 Port - -, f 5;
 #X obj 105 127 tgl 15 0 empty empty Connect/Disconnect 17 7 0 10 -262144
--1 -1 5431 1;
+-1 -1 1 1;
 #X obj 188 185 sel 1 0;
 #X obj 105 103 t 1 i;
 #X obj 9 278 netsend -u -b;
