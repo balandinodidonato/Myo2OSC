@@ -18,7 +18,8 @@
 class MainComponent    : public Component,
                          private Timer,
                          public MenuBarModel,
-                        private ComboBox::Listener
+                         private ComboBox::Listener,
+                         private Button::Listener   // Added Listener for panel show/ hide buttons
 {
     
 public:
@@ -47,6 +48,8 @@ public:
     
     void AboutMyoMapperDialogWindow();
     void HelpDialogWindow();
+    void buttonClicked (Button* button) override;   // Added function to update code when ToggleButton is pressed
+    
     Settings settingsPannel;
     
     

@@ -27,8 +27,13 @@ menuBar(this)
     getLookAndFeel().setUsingNativeAlertWindows(true);
     
     addAndMakeVisible(orientation);
+    orientation.setVisible (false);
     addAndMakeVisible(settingsPannel);
     addAndMakeVisible(pose);
+    pose.setVisible (false);
+    
+    settingsPannel.showOrientation.addListener (this);
+    settingsPannel.showPose.addListener (this);
     
     settingsPannel.myoList.addListener(this);
     myoManager.connect();
@@ -69,24 +74,6 @@ void MainComponent::paint(juce::Graphics &g)
     }
     
     g.fillAll(Colours::grey);
-
-    #if JUCE_MAC
-        settingsPannel.setBounds(10, 10, getRight()-20, getHeight()*0.23-10);
-    #else
-        menuBar.setBounds(0, 0, getWidth(), 20);
-        settingsPannel.setBounds(10, menuBar.getBottom()+10, getRight()-20, getHeight()*0.19-10);
-    #endif
-   
-    if(settingsPannel.getShowOrientation()==1)
-        orientation.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), ((getHeight()*0.63)-15));
-    else orientation.setBounds(0, 0, 0, 0);
-    
-    if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==1)
-        pose.setBounds(orientation.getX(), orientation.getBottom()+10, settingsPannel.getWidth()*settingsPannel.getShowPose(), (getHeight()*0.12));
-    else if(settingsPannel.getShowPose()==1 && settingsPannel.getShowOrientation()==0)
-        pose.setBounds(settingsPannel.getX(), settingsPannel.getBottom()+5, settingsPannel.getWidth(), (getHeight()*0.12));
-    else pose.setBounds(0, 0, 0, 0);
-    
 }
 
 void MainComponent::resized()
@@ -109,7 +96,61 @@ void MainComponent::resized()
     else pose.setBounds(0, 0, 0, 0);
 }
 
-//int i = 0;
+// Function checking if ToggleButton was pressed to update GUI
+void MainComponent::buttonClicked (Button* button)
+{
+    if (button == &settingsPannel.showOrientation)
+    {
+        if (orientation.isVisible() == true)
+        {
+            orientation.setVisible (!orientation.isVisible());
+            orientation.setBounds (0, 0 ,0,0 );
+            pose.setBounds (settingsPannel.getX(),
+                            settingsPannel.getBottom() + 5,
+                            settingsPannel.getWidth(),
+                            getHeight() * 0.12);
+        }
+        else if (orientation.isVisible() == false)
+        {
+            orientation.setVisible (!orientation.isVisible());
+            orientation.setBounds (settingsPannel.getX(),
+                                   settingsPannel.getBottom() + 5,
+                                   settingsPannel.getWidth(),
+                                   (getHeight() * 0.63) - 15);
+            pose.setBounds (orientation.getX(),
+                            orientation.getBottom() + 10,
+                            settingsPannel.getWidth() * settingsPannel.getShowPose(),
+                            getHeight() * 0.12);
+        }
+    }
+    
+    if (button == &settingsPannel.showPose)
+    {
+        if (pose.isVisible() == true)
+        {
+            pose.setVisible (!pose.isVisible());
+            pose.setBounds (0, 0, 0, 0);
+        }
+        else if (pose.isVisible() == false)
+        {
+            pose.setVisible (!pose.isVisible());
+            if (orientation.isVisible() == true)
+            {
+                pose.setBounds (orientation.getX(),
+                                orientation.getBottom() + 10,
+                                settingsPannel.getWidth() * settingsPannel.getShowPose(),
+                                getHeight() * 0.12);
+            }
+            else if (orientation.isVisible() == false)
+            {
+                pose.setBounds (settingsPannel.getX(),
+                                settingsPannel.getBottom() + 5,
+                                settingsPannel.getWidth(),
+                                getHeight() * 0.12);
+            }
+        }
+    }
+}
 
 void MainComponent::timerCallback()
 {
