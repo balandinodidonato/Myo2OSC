@@ -650,7 +650,7 @@ void OSC::bufferOsc (MyoData &myoData)
     
     if (tree.getChildWithName("EmgData").getChildWithName("HandPose").getPropertyAsValue ("oscToWekinator", 0) == true)
     {
-        oscToWekinator.addString (myoData.pose);
+        oscToWekinator.addFloat32((float)myoData.poseID);
     }
     
     oscToWekiBuffer.push_back (oscToWekinator);
